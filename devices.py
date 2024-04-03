@@ -15,13 +15,13 @@ def has_mps() -> bool:
         except Exception:
             return False
     else:
-        return torch.backends.mps.is_available() and torch.backends.mps.is_built()    
+        return torch.backends.mps.is_available() and torch.backends.mps.is_built()
 
 devices = []
 
 if has_mps():
     devices.append("mps")
-    
+
 devices.append("cpu")
 
 result = {
