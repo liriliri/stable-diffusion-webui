@@ -18,6 +18,16 @@ def has_mps() -> bool:
         return torch.backends.mps.is_available() and torch.backends.mps.is_built()
 
 devices = []
+cuda = []
+
+if torch.cuda.is_available():
+    num_gpus = torch.cuda.device_count()
+    i = 0
+    while i < num_gpus:
+        devices.append(f"cuda:{i}")
+        device_name = torch.cuda.get_device_name(i)
+        cuda.append(f"CUDA {i}: {device_name}")
+        i += 1
 
 if has_mps():
     devices.append("mps")
@@ -25,7 +35,8 @@ if has_mps():
 devices.append("cpu")
 
 result = {
-    "devices": devices
+    "devices": devices,
+    "cuda": cuda
 }
 
 print(json.dumps(result))
