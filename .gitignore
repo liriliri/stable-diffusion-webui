@@ -39,3 +39,5 @@ notification.mp3
 /.coverage*
 /test/test_outputs
 /cache
+
+/extensions-builtin/sd-webui-controlnet/
