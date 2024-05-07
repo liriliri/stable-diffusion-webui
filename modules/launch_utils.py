@@ -349,7 +349,7 @@ def prepare_environment():
     stable_diffusion_xl_repo = os.environ.get('STABLE_DIFFUSION_XL_REPO', "https://github.com/Stability-AI/generative-models.git")
     k_diffusion_repo = os.environ.get('K_DIFFUSION_REPO', 'https://github.com/crowsonkb/k-diffusion.git')
     blip_repo = os.environ.get('BLIP_REPO', 'https://github.com/salesforce/BLIP.git')
-    
+
     controlnet_repo = 'https://github.com/Mikubill/sd-webui-controlnet.git'
 
     assets_commit_hash = os.environ.get('ASSETS_COMMIT_HASH', "6f7db241d2f8ba7457bac5ca9753331f0c266917")
@@ -416,7 +416,7 @@ def prepare_environment():
     git_clone(stable_diffusion_xl_repo, repo_dir('generative-models'), "Stable Diffusion XL", stable_diffusion_xl_commit_hash)
     git_clone(k_diffusion_repo, repo_dir('k-diffusion'), "K-diffusion", k_diffusion_commit_hash)
     git_clone(blip_repo, repo_dir('BLIP'), "BLIP", blip_commit_hash)
-    
+
     git_clone(controlnet_repo, os.path.join(extensions_builtin_dir, 'sd-webui-controlnet'), "Control Net", controlnet_commit_hash)
 
     startup_timer.record("clone repositores")
