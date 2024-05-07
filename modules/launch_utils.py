@@ -417,7 +417,8 @@ def prepare_environment():
     git_clone(k_diffusion_repo, repo_dir('k-diffusion'), "K-diffusion", k_diffusion_commit_hash)
     git_clone(blip_repo, repo_dir('BLIP'), "BLIP", blip_commit_hash)
 
-    git_clone(controlnet_repo, os.path.join(extensions_builtin_dir, 'sd-webui-controlnet'), "Control Net", controlnet_commit_hash)
+    controlnet_dir = os.path.join(extensions_builtin_dir, 'sd-webui-controlnet')
+    git_clone(controlnet_repo, controlnet_dir, "Control Net", controlnet_commit_hash)
 
     startup_timer.record("clone repositores")
 
@@ -437,6 +438,7 @@ def prepare_environment():
 
     if not args.skip_install:
         run_extensions_installers(settings_file=args.ui_settings_file)
+        run_extension_installer(controlnet_dir)
 
     if args.update_check:
         version_check(commit)
